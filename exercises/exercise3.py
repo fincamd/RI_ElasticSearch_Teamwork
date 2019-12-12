@@ -11,10 +11,7 @@ from elasticsearch.client import IndicesClient
 ppPrinter = pprint.PrettyPrinter()
 searchEngine = Elasticsearch()
 
-relevantTerms = []
-
 def main():
-
     results = searchEngine.search(
         index="reddit-mentalhealth4",
         body={
@@ -26,8 +23,8 @@ def main():
                 "por_palabbres": {
                     "significant_text": {
                         "field": "selftext",
-                        "size": 100,
-                        "chi_square": {},
+                        "size": 40,
+                        "jlh": {},
                     },
                 },
             },
@@ -38,18 +35,9 @@ def main():
 
     for key in keys:
         term = key["key"].replace("_", "").strip()
-        if relevantTerms.count(term) == 0:
-            relevantTerms.append(term)
-            print(term)
 
-    # ppPrinter.pprint(results)
-
-    rows = list(relevantTerms)
-    columns = list(relevantTerms)
-
-    for row in rows:
-        for column in columns:
-            
+    with open("medicationFound.json", "wt") as dumpFile:
+        pass
 
 if __name__ == "__main__":
     main()

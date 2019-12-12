@@ -11,61 +11,76 @@ from elasticsearch.client import IndicesClient
 ppPrinter = pprint.PrettyPrinter()
 searchEngine = Elasticsearch()
 
+relevantTerms = []
+postsId = []
+postsToDump = {}
 
 def main():
-    # domains = searchEngine.search(index="reddit-mentalhealth", q="domain")
-
-    # domains = searchEngine.search(
-    #     index="reddit-mentalhealth",
+    results = searchEngine.search(
+        index="reddit-mentalhealth4",
         body={
-            "query": {"match": {"selftext": {"query": "depression"}}},
-            "_source": [
-                "category",
-                "distinguished",
-                "downs",
-                "ups",
-                "guilded",
-                "saved",
-                "subreddit_id",
-                "subreddit_subs",
-                "title",
-                "domain",
-                "subreddit",
-                "selftext",
-            ],
-            "size": 10,
-            "track_total_hits": True,
+            "size": 0,
+            "query": {
+                "query_string": {"default_field": "selftext", "query": "alcoholism"}
+            },
+            "aggs": {
+                "por_palabbres": {
+                    "significant_text": {
+                        "field": "selftext",
+                        "size": 40,
+                        "jlh": {},
+                    },
+                },
+            },
         },
-    # )
+    )
 
-    # domains = searchEngine.search(
-    #     index="reddit-mentalhealth",
-    #     body={
-    #         "size": 0,
-    #         "query": {"match": {"selftext": "depression"}},
-    #         "aggs": {"mostCommonTerms": {"terms": {"field": "selftext", "size": 20}}},
-    #     },
-    # )
+    keys = results["aggregations"]["por_palabbres"]["buckets"]
 
-    # domains = searchEngine.search(
-    #     index="reddit-mentalhealth",
-    #     body={
-    #         "settings" : {
-    #             "analysis" : {
-    #                 "analyzer" : {
-    #                     "my_stopper" : {
-    #                         "type" : "stop",
-    #                         "stopwords" : "_english_"
-    #                     }
-    #                 }
-    #             }
-    #         }
-    #     }
-    # )
+    for key in keys:
+        term = key["key"].replace("_", "").strip()
+        if relevantTerms.count(term) == 0:
+            relevantTerms.append(term)
+            print(term)
 
-    ppPrinter.pprint(domains)
-    print(str(domains) + 'resultados para la query q="diagnosed"')
+    terms1 = list(relevantTerms)
+    terms2 = list(relevantTerms)
+    terms3 = list(relevantTerms)
 
+    for term1 in terms1:
+        for term2 in terms2:
+            if (term1 != term2):
+                for term3 in terms3:
+                    if (term3 != term2 and term3 != term1):
+                        termPairResults = searchEngine.search(
+                            index="reddit-mentalhealth4", 
+                            body={
+                                "size": 10,
+                                "query": {
+                                    "query_string": {"default_field": "selftext", "query": term1 + " AND " + term2 + " AND " + term3}
+                                },
+                                "_source": ["id", "created", "selftext", "author"]
+                            }
+                        )
+                        termPairResults = termPairResults["hits"]["hits"]
+                        for post in termPairResults:
+                            if (postsToDump.get(post["_source"]["id"]) == None): # Ad-Hoc solution
+                                postsToDump[post["_source"]["id"]] = post
+
+    postsSortedByScore = {}
+    for key in postsToDump:
+        postsSortedByScore[key] = postsToDump[key]["_score"]
+
+    postsSortedByScore = sorted(postsSortedByScore.items(), key = lambda kv:(kv[1], kv[0]), reverse=True)
+
+    with open("relevantPosts.json", "wt") as dumpFile:
+        print(postsSortedByScore)
+        print(postsSortedByScore[0])
+        for key, value in postsSortedByScore:
+            print(key)
+            # postToSave = postsToDump[key]
+            # dumpFile.write(postToSave)
+            # dumpFile.write("\n")
 
 if __name__ == "__main__":
     main()
