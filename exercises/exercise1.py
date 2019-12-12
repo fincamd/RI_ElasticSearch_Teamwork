@@ -32,6 +32,7 @@ def main():
                 },
             },
         },
+        request_timeout=30
     )
 
     keys = results["aggregations"]["por_palabbres"]["buckets"]

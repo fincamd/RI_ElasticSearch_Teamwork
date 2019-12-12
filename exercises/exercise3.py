@@ -14,27 +14,25 @@ def main():
     results = searchEngine.search(
         index="reddit-mentalhealth4",
         body={
-            "size": 10,
+            "size": 0,
             "query": {
-                "query_string": {"default_field": "selftext", "query": "medication OR medicine"}
+                "query_string": {"default_field": "selftext", "query": "prescribed"}
             },
             "aggs": {
-                "por_palabbres2": {
+                "words": {
                     "significant_text": {
                         "field": "selftext",
-                        "size": 20,
-                        "gnd": {}
+                        "size": 40,
+                        # "include": ".*x.*"
+                        "include": "[A-Z][A-Za-z]*"
                     },
-                },
-            },
-        }
+                }
+            }
+        },
+        request_timeout=30
     )
 
-    keys = results["aggregations"]["por_palabbres2"]["buckets"]
-
-    for key in keys:
-        term = key["key"].replace("_", "").strip()
-        print(term)
+    ppPrinter.pprint(results)
 
     with open("medicationFound.json", "wt") as dumpFile:
         pass
