@@ -6,7 +6,6 @@ import pprint  # Para poder hacer uso de PrettyPrinter
 import sys  # Para poder usar exit
 
 from elasticsearch import Elasticsearch
-from elasticsearch.client import IndicesClient
 
 ppPrinter = pprint.PrettyPrinter()
 searchEngine = Elasticsearch()

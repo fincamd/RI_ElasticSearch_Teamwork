@@ -6,7 +6,6 @@ import pprint  # Para poder hacer uso de PrettyPrinter
 import sys  # Para poder usar exit
 
 from elasticsearch import Elasticsearch
-from elasticsearch.client import IndicesClient
 
 ppPrinter = pprint.PrettyPrinter()
 searchEngine = Elasticsearch()
@@ -15,26 +14,27 @@ def main():
     results = searchEngine.search(
         index="reddit-mentalhealth4",
         body={
-            "size": 0,
+            "size": 10,
             "query": {
-                "query_string": {"default_field": "selftext", "query": "alcoholism"}
+                "query_string": {"default_field": "selftext", "query": "medication OR medicine"}
             },
             "aggs": {
-                "por_palabbres": {
+                "por_palabbres2": {
                     "significant_text": {
                         "field": "selftext",
-                        "size": 40,
-                        "jlh": {},
+                        "size": 20,
+                        "gnd": {}
                     },
                 },
             },
-        },
+        }
     )
 
-    keys = results["aggregations"]["por_palabbres"]["buckets"]
+    keys = results["aggregations"]["por_palabbres2"]["buckets"]
 
     for key in keys:
         term = key["key"].replace("_", "").strip()
+        print(term)
 
     with open("medicationFound.json", "wt") as dumpFile:
         pass
