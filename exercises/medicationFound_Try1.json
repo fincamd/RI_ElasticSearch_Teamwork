@@ -1,0 +1,167 @@
+
+C:\Users\Daniel Finca\Documents\GitHub\RI_ElasticSearch_Teamwork\exercises>python exercise3.py
+
+--- PRESCRIBED ---
+
+/--------------------------------------------------------------/
+Term just processed --> adderal
+Terms ratio --> Total terms: 1 || Actual medicines: 1
+The percentage of medicines from extracted terms is: 100.0000%
+/--------------------------------------------------------------/
+Term just processed --> side effect
+Terms ratio --> Total terms: 2 || Actual medicines: 1
+The percentage of medicines from extracted terms is: 50.0000%
+/--------------------------------------------------------------/
+Term just processed --> diagnos
+Terms ratio --> Total terms: 3 || Actual medicines: 1
+The percentage of medicines from extracted terms is: 33.3333%
+/--------------------------------------------------------------/
+Term just processed --> antibiot
+Terms ratio --> Total terms: 4 || Actual medicines: 2
+The percentage of medicines from extracted terms is: 50.0000%
+/--------------------------------------------------------------/
+Term just processed --> effect
+Terms ratio --> Total terms: 5 || Actual medicines: 2
+The percentage of medicines from extracted terms is: 40.0000%
+/--------------------------------------------------------------/
+Term just processed --> vyvans
+Terms ratio --> Total terms: 6 || Actual medicines: 3
+The percentage of medicines from extracted terms is: 50.0000%
+/--------------------------------------------------------------/
+Term just processed --> pill
+Terms ratio --> Total terms: 7 || Actual medicines: 3
+The percentage of medicines from extracted terms is: 42.8571%
+/--------------------------------------------------------------/
+Term just processed --> drug
+Terms ratio --> Total terms: 8 || Actual medicines: 3
+The percentage of medicines from extracted terms is: 37.5000%
+/--------------------------------------------------------------/
+Term just processed --> symptom
+Terms ratio --> Total terms: 9 || Actual medicines: 3
+The percentage of medicines from extracted terms is: 33.3333%
+/--------------------------------------------------------------/
+Term just processed --> adhd
+Terms ratio --> Total terms: 10 || Actual medicines: 3
+The percentage of medicines from extracted terms is: 30.0000%
+/--------------------------------------------------------------/
+Term just processed --> test
+Terms ratio --> Total terms: 11 || Actual medicines: 3
+The percentage of medicines from extracted terms is: 27.2727%
+/--------------------------------------------------------------/
+Term just processed --> help
+Terms ratio --> Total terms: 12 || Actual medicines: 3
+The percentage of medicines from extracted terms is: 25.0000%
+/--------------------------------------------------------------/
+Term just processed --> went
+Terms ratio --> Total terms: 13 || Actual medicines: 3
+The percentage of medicines from extracted terms is: 23.0769%
+/--------------------------------------------------------------/
+Term just processed --> took
+Terms ratio --> Total terms: 14 || Actual medicines: 3
+The percentage of medicines from extracted terms is: 21.4286%
+/--------------------------------------------------------------/
+Term just processed --> xanax
+Terms ratio --> Total terms: 15 || Actual medicines: 4
+The percentage of medicines from extracted terms is: 26.6667%
+/--------------------------------------------------------------/
+Term just processed --> side
+Terms ratio --> Total terms: 16 || Actual medicines: 4
+The percentage of medicines from extracted terms is: 25.0000%
+/--------------------------------------------------------------/
+Term just processed --> anxieti
+Terms ratio --> Total terms: 17 || Actual medicines: 4
+The percentage of medicines from extracted terms is: 23.5294%
+/--------------------------------------------------------------/
+Term just processed --> infect
+Terms ratio --> Total terms: 18 || Actual medicines: 4
+The percentage of medicines from extracted terms is: 22.2222%
+/--------------------------------------------------------------/
+Term just processed --> also
+Terms ratio --> Total terms: 19 || Actual medicines: 4
+The percentage of medicines from extracted terms is: 21.0526%
+/--------------------------------------------------------------/
+Term just processed --> week
+Terms ratio --> Total terms: 20 || Actual medicines: 4
+The percentage of medicines from extracted terms is: 20.0000%
+/--------------------------------------------------------------/
+Term just processed --> month
+Terms ratio --> Total terms: 21 || Actual medicines: 4
+The percentage of medicines from extracted terms is: 19.0476%
+/--------------------------------------------------------------/
+Term just processed --> day
+Terms ratio --> Total terms: 22 || Actual medicines: 4
+The percentage of medicines from extracted terms is: 18.1818%
+/--------------------------------------------------------------/
+Term just processed --> start
+Terms ratio --> Total terms: 23 || Actual medicines: 4
+The percentage of medicines from extracted terms is: 17.3913%
+/--------------------------------------------------------------/
+Term just processed --> ago
+Terms ratio --> Total terms: 24 || Actual medicines: 4
+The percentage of medicines from extracted terms is: 16.6667%
+/--------------------------------------------------------------/
+Term just processed --> dosag
+Terms ratio --> Total terms: 25 || Actual medicines: 4
+The percentage of medicines from extracted terms is: 16.0000%
+/--------------------------------------------------------------/
+Term just processed --> year
+Terms ratio --> Total terms: 26 || Actual medicines: 4
+The percentage of medicines from extracted terms is: 15.3846%
+/--------------------------------------------------------------/
+Term just processed --> anti
+Terms ratio --> Total terms: 27 || Actual medicines: 5
+The percentage of medicines from extracted terms is: 18.5185%
+/--------------------------------------------------------------/
+Term just processed --> issu
+Terms ratio --> Total terms: 28 || Actual medicines: 5
+The percentage of medicines from extracted terms is: 17.8571%
+/--------------------------------------------------------------/
+Term just processed --> appoint
+Terms ratio --> Total terms: 29 || Actual medicines: 5
+The percentage of medicines from extracted terms is: 17.2414%
+/--------------------------------------------------------------/
+Term just processed --> second opinion
+Terms ratio --> Total terms: 30 || Actual medicines: 5
+The percentage of medicines from extracted terms is: 16.6667%
+/--------------------------------------------------------------/
+Term just processed --> pain
+Terms ratio --> Total terms: 31 || Actual medicines: 5
+The percentage of medicines from extracted terms is: 16.1290%
+/--------------------------------------------------------------/
+Term just processed --> sinc
+Terms ratio --> Total terms: 32 || Actual medicines: 5
+The percentage of medicines from extracted terms is: 15.6250%
+/--------------------------------------------------------------/
+Term just processed --> back
+Terms ratio --> Total terms: 33 || Actual medicines: 5
+The percentage of medicines from extracted terms is: 15.1515%
+/--------------------------------------------------------------/
+Term just processed --> blood
+Terms ratio --> Total terms: 34 || Actual medicines: 5
+The percentage of medicines from extracted terms is: 14.7059%
+/--------------------------------------------------------------/
+Term just processed --> wellbutrin
+Terms ratio --> Total terms: 35 || Actual medicines: 6
+The percentage of medicines from extracted terms is: 17.1429%
+/--------------------------------------------------------------/
+Term just processed --> current
+Terms ratio --> Total terms: 36 || Actual medicines: 6
+The percentage of medicines from extracted terms is: 16.6667%
+/--------------------------------------------------------------/
+Term just processed --> get
+Terms ratio --> Total terms: 37 || Actual medicines: 6
+The percentage of medicines from extracted terms is: 16.2162%
+/--------------------------------------------------------------/
+Term just processed --> antidepress
+Terms ratio --> Total terms: 38 || Actual medicines: 6
+The percentage of medicines from extracted terms is: 15.7895%
+/--------------------------------------------------------------/
+Term just processed --> work
+Terms ratio --> Total terms: 39 || Actual medicines: 6
+The percentage of medicines from extracted terms is: 15.3846%
+/--------------------------------------------------------------/
+Term just processed --> go
+Terms ratio --> Total terms: 40 || Actual medicines: 6
+The percentage of medicines from extracted terms is: 15.0000%
+
+C:\Users\Daniel Finca\Documents\GitHub\RI_ElasticSearch_Teamwork\exercises>
