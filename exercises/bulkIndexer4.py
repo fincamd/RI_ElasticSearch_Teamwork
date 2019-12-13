@@ -249,7 +249,7 @@ def main():
                     "analizador_personalizado": {
                         "tokenizer": "standard",
                         "filter": [
-                            # "lowercase",
+                            "lowercase",
                             "palabras_vacias_ingles_porter",
                             "estematizacion_ingles",
                             "uni_bi_tri_gramas",
