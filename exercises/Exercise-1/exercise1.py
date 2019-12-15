@@ -69,9 +69,6 @@ def main():
                             if (postsToDump.get(post["_source"]["id"]) == None):
                                 postsToDump[post["_source"]["id"]] = post
 
-    print(postsToDump)
-    ppPrinter.pprint(postsToDump)
-
     # Sorting obtained posts
     postsSortedByScore = {}
     for key in postsToDump:
@@ -82,7 +79,7 @@ def main():
 
     # File format creation using obtained posts
     lines = []
-    for id, score in postsSortedByScore:
+    for id, score in postsSortedByScore:    
         if postsToDump.get(id) != None:
             post = postsToDump[id]
             postData = {}
