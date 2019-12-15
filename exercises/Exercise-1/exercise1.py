@@ -20,7 +20,7 @@ def main():
     results = searchEngine.search(
         index="reddit-mentalhealth4",
         body={
-            "size": 20,
+            "size": 0,
             "query": {
                 "query_string": {"default_field": "selftext", "query": "alcoholism"}
             },
@@ -79,7 +79,7 @@ def main():
 
     # File format creation using obtained posts
     lines = []
-    for id, score in postsSortedByScore:    
+    for id, score in postsSortedByScore:
         if postsToDump.get(id) != None:
             post = postsToDump[id]
             postData = {}

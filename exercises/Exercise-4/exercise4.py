@@ -5,6 +5,8 @@ import pprint  # Para poder hacer uso de PrettyPrinter
 import sys  # Para poder usar exit
 import requests
 import random
+import numpy as np
+import matplotlib.pyplot as plotter 
 
 from elasticsearch import Elasticsearch
 
@@ -94,6 +96,17 @@ def program(op, fileName):
             int(value) / totalNumberOfPosts * 100, "%")
         print(dumpLine)
         dumpLines.append(dumpLine)
+
+    # Plot the statistics into a graph
+    labels = []
+    values = []
+    for key, value in subredditToNPosts.items():
+        labels.append(str(key))
+        values.append(int(value))
+    plotter.barh(labels, values)
+    plotter.ylabel("Subreddit names")
+    plotter.xlabel("# documents per subreddit")
+    plotter.show()
 
     with open(f"statistics_{fileName}.txt", "w") as dumpFile:
         for line in dumpLines:
