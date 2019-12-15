@@ -35,7 +35,7 @@ def isMedicine(word):
             instanceOfProperty = wikidataItemsIndex["P31"]
             for superclass in instanceOfProperty:
                 resultId = superclass["mainsnak"]["datavalue"]["value"]["id"]
-                if resultId == "Q12140":
+                if resultId == "Q12140": # Medication class' id
                     return True
     return False
 
