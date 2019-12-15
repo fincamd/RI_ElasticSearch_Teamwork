@@ -71,12 +71,8 @@ def program(op):
             "query": {
                 "bool":{
                     "must": {
-                        "match" : {"selftext":op}
-                            
-                    },
-                    "filter":{
-                        "term": { "author": str(result['key'])}  
-                    }
+                         "term": { "author": str(result['key'])}                   
+                }
                 }
             },
             "aggs": {
