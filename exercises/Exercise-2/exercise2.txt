@@ -11,7 +11,7 @@ body = {
     "query": {
         "more_like_this" : {
             "fields" : ["selftext"],
-            "like" : {postToFeedSelfText},
+            "like" : f"{postToFeedSelfText}",
             "min_term_freq" : 1,
             "max_query_terms" : 12
         }
