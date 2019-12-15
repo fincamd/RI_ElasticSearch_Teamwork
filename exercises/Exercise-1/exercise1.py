@@ -43,7 +43,6 @@ def main():
         term = key["key"].replace("_", "").strip()
         if relevantTerms.count(term) == 0:
             relevantTerms.append(term)
-            print(term)
 
     terms1 = list(relevantTerms)
     terms2 = list(relevantTerms)
@@ -61,7 +60,7 @@ def main():
                                 "query": {
                                     "query_string": {"default_field": "selftext", "query": term1 + " AND " + term2 + " AND " + term3}
                                 },
-                                "_source": ["id", "created", "selftext", "author"]
+                                "_source": ["id", "created_utc", "selftext", "author"]
                             }
                         )
                         termPairResults = termPairResults["hits"]["hits"]
@@ -70,6 +69,10 @@ def main():
                             if (postsToDump.get(post["_source"]["id"]) == None):
                                 postsToDump[post["_source"]["id"]] = post
 
+    print(postsToDump)
+    ppPrinter.pprint(postsToDump)
+
+    # Sorting obtained posts
     postsSortedByScore = {}
     for key in postsToDump:
         postsSortedByScore[key] = postsToDump[key]["_score"]
@@ -77,22 +80,25 @@ def main():
     postsSortedByScore = sorted(postsSortedByScore.items(
     ), key=lambda kv: (kv[1], kv[0]), reverse=True)
 
+    # File format creation using obtained posts
     lines = []
     for id, score in postsSortedByScore:
-        for post in results["hits"]["hits"]:
-            if str(post["_id"]) == str(id):
-                postData = {}
-                postData["author"] = post["_source"]["author"]
-                ts_epoch = post["_source"]["created_utc"]
-                timestamp = datetime.datetime.fromtimestamp(ts_epoch).strftime('%Y-%m-%d %H:%M:%S')
-                postData["creation_date"] = timestamp
-                postData["selftext"] = post["_source"]["selftext"]
-                lines.append(json.dumps(postData))
-                print(postData)
+        if postsToDump.get(id) != None:
+            post = postsToDump[id]
+            postData = {}
+            postData["author"] = post["_source"]["author"]
+            ts_epoch = post["_source"]["created_utc"]
+            timestamp = datetime.datetime.fromtimestamp(
+                ts_epoch).strftime('%Y-%m-%d %H:%M:%S')
+            postData["creation_date"] = timestamp
+            postData["selftext"] = post["_source"]["selftext"]
+            lines.append(json.dumps(postData))
 
-    with open("relevantPosts.json", "wt") as dumpFile:
-        for key, value in postsSortedByScore:
-            print(key)
+    # Actual file creation
+    with open("relevantPosts.ndjson", "w") as dumpFile:
+        for line in lines:
+            dumpFile.write(line)
+            dumpFile.write("\n")
 
 
 if __name__ == "__main__":

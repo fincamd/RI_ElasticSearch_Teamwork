@@ -17,15 +17,18 @@ searchEngine = Elasticsearch()
 
 debugLog = []
 
+
 def isMedicine(word):
     # Get the medicine json from wikidata
-    articleIndexJson = requests.get(_WIKIDATA_INDEX_URL.replace("%SEARCH%", word)).json()
+    articleIndexJson = requests.get(
+        _WIKIDATA_INDEX_URL.replace("%SEARCH%", word)).json()
     articleIndexJson = articleIndexJson["search"]
     # Take the Q from the results json
     for item in articleIndexJson:
         itemId = item["title"]
         # Query wikidata again to get json using Q param
-        wikidataItemsIndex = requests.get(_WIKIDATA_DICTIONARY_URL.replace("%ITEM_ID%", itemId)).json()
+        wikidataItemsIndex = requests.get(
+            _WIKIDATA_DICTIONARY_URL.replace("%ITEM_ID%", itemId)).json()
         wikidataItemsIndex = wikidataItemsIndex["entities"][itemId]["claims"]
         # Take P31, look for Q for medication/medicine and for pharmaceutical product
         if wikidataItemsIndex.get("P31") != None:
@@ -39,21 +42,21 @@ def isMedicine(word):
 
 def main():
     results = searchEngine.search(
-    index="reddit-mentalhealth4",
-    body={
-        "size": 0,
-        "query": { "match": { "selftext": "prescribe"} },
-        "aggs": {
-            "medicines": { 
-                "significant_terms": { 
-                    "field": "selftext",
-                    # "exclude": ".*(prescri|doctor|med|take|dose|psychiatrist|[0-9]+|mg).*",
-                    "size": 100,
+        index="reddit-mentalhealth4",
+        body={
+            "size": 0,
+            "query": {"match": {"selftext": "prescribe"}},
+            "aggs": {
+                "medicines": {
+                    "significant_terms": {
+                        "field": "selftext",
+                        # "exclude": ".*(prescri|doctor|med|take|dose|psychiatrist|[0-9]+|mg).*",
+                        "size": 100,
+                    },
                 },
-            },
-        }
-    },
-    request_timeout=30
+            }
+        },
+        request_timeout=30
     )
 
     results = results["aggregations"]["medicines"]["buckets"]
@@ -73,16 +76,22 @@ def main():
             actualMedicines += 1
         print("/-------------------------------------------------------------/")
         print("Term just processed -->", term)
-        print("Terms ratio --> Total terms:", totalItems, "|| Actual medicines:", actualMedicines)
-        print("The percentage of medicines from extracted terms is: %.4f%s" %(actualMedicines / totalItems * 100, "%"))
-        debugLog.append("/-------------------------------------------------------------/\n")
+        print("Terms ratio --> Total terms:", totalItems,
+              "|| Actual medicines:", actualMedicines)
+        print("The percentage of medicines from extracted terms is: %.4f%s" %
+              (actualMedicines / totalItems * 100, "%"))
+        debugLog.append(
+            "/-------------------------------------------------------------/\n")
         debugLog.append("Term just processed --> " + str(term) + "\n")
-        debugLog.append("Terms ratio --> Total terms: " + str(totalItems) + " || Actual medicines: " + str(actualMedicines) + "\n")
-        formattedPercentageLog = ("The percentage of medicines from extracted terms is: %.4f%s" %(actualMedicines / totalItems * 100, "%\n"))
+        debugLog.append("Terms ratio --> Total terms: " + str(totalItems) +
+                        " || Actual medicines: " + str(actualMedicines) + "\n")
+        formattedPercentageLog = ("The percentage of medicines from extracted terms is: %.4f%s" % (
+            actualMedicines / totalItems * 100, "%\n"))
         debugLog.append(formattedPercentageLog)
 
-    with open("medicationFound_" + str(random.randint(0, sys.maxsize)) + ".json", "wt") as dumpFile:
+    with open("medicationFound_" + str(random.randint(0, sys.maxsize)) + ".txt", "w") as dumpFile:
         dumpFile.writelines(debugLog)
+
 
 if __name__ == "__main__":
     main()

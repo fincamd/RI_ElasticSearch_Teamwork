@@ -16,10 +16,11 @@ op2 = "self harm"
 
 
 def main():
-    program(op1)
+    program(op1, "suicide")
+    program(op2, "self_harm")
 
 
-def program(op):
+def program(op, fileName):
     results = searchEngine.search(
         index="reddit-mentalhealth4",
         body={
@@ -63,12 +64,9 @@ def program(op):
             },
             request_timeout=30
         )
-        # print(result['key'])
+
         posts = one_user["hits"]["hits"]
 
-        # for post in posts:
-        #     print("--->", post["_source"]["title"],
-        #           post["_source"]["subreddit"])
         authors.append(result["key"])
 
     subs = searchEngine.search(
@@ -100,15 +98,28 @@ def program(op):
     lines = subs["aggregations"]["subs"]["buckets"]
     print("--subs--")
     for line in lines:
-        # print(line['key'], line["doc_count"])
         subredditToNPosts[line["key"]] = int(line["doc_count"])
         totalNumberOfPosts += int(line["doc_count"])
+    dumpLines = []
     print("---------------------------")
     print("Overall statistics: ")
     print("\tTotal number of documents found:", totalNumberOfPosts)
     print("\tSubreddit to doc_count data:")
+    dumpLines.append("---------------------------")
+    dumpLines.append("Overall statistics:")
+    dumpLines.append("\tTotal number of documents found: %d" %
+                     totalNumberOfPosts)
+    dumpLines.append("\tSubreddit to doc_count data:")
     for key, value in subredditToNPosts.items():
-        print("\t\tSubreddit: %25s" %(key), "|| Percentage of total count: %3.3f%s" %(int(value) / totalNumberOfPosts * 100, "%"))
+        dumpLine = "\t\tSubreddit: %25s" % (key) + " || Percentage of total count: %3.3f%s" % (
+            int(value) / totalNumberOfPosts * 100, "%")
+        print(dumpLine)
+        dumpLines.append(dumpLine)
+
+    with open(f"statistics_{fileName}.txt", "w") as dumpFile:
+        for line in dumpLines:
+            dumpFile.write(line)
+            dumpFile.write("\n")
 
 
 if __name__ == "__main__":
