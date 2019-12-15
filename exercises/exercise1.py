@@ -4,6 +4,7 @@ from __future__ import print_function
 import json  # Para poder trabajar con objetos JSON
 import pprint  # Para poder hacer uso de PrettyPrinter
 import sys  # Para poder usar exit
+import datetime
 
 from elasticsearch import Elasticsearch
 
@@ -14,11 +15,12 @@ relevantTerms = []
 postsId = []
 postsToDump = {}
 
+
 def main():
     results = searchEngine.search(
         index="reddit-mentalhealth4",
         body={
-            "size": 0,
+            "size": 20,
             "query": {
                 "query_string": {"default_field": "selftext", "query": "alcoholism"}
             },
@@ -53,7 +55,7 @@ def main():
                 for term3 in terms3:
                     if (term3 != term2 and term3 != term1):
                         termPairResults = searchEngine.search(
-                            index="reddit-mentalhealth4", 
+                            index="reddit-mentalhealth4",
                             body={
                                 "size": 10,
                                 "query": {
@@ -64,23 +66,34 @@ def main():
                         )
                         termPairResults = termPairResults["hits"]["hits"]
                         for post in termPairResults:
-                            if (postsToDump.get(post["_source"]["id"]) == None): # Ad-Hoc solution
+                            # Ad-Hoc solution
+                            if (postsToDump.get(post["_source"]["id"]) == None):
                                 postsToDump[post["_source"]["id"]] = post
 
     postsSortedByScore = {}
     for key in postsToDump:
         postsSortedByScore[key] = postsToDump[key]["_score"]
 
-    postsSortedByScore = sorted(postsSortedByScore.items(), key = lambda kv:(kv[1], kv[0]), reverse=True)
+    postsSortedByScore = sorted(postsSortedByScore.items(
+    ), key=lambda kv: (kv[1], kv[0]), reverse=True)
+
+    lines = []
+    for id, score in postsSortedByScore:
+        for post in results["hits"]["hits"]:
+            if str(post["_id"]) == str(id):
+                postData = {}
+                postData["author"] = post["_source"]["author"]
+                ts_epoch = post["_source"]["created_utc"]
+                timestamp = datetime.datetime.fromtimestamp(ts_epoch).strftime('%Y-%m-%d %H:%M:%S')
+                postData["creation_date"] = timestamp
+                postData["selftext"] = post["_source"]["selftext"]
+                lines.append(json.dumps(postData))
+                print(postData)
 
     with open("relevantPosts.json", "wt") as dumpFile:
-        print(postsSortedByScore)
-        print(postsSortedByScore[0])
         for key, value in postsSortedByScore:
             print(key)
-            # postToSave = postsToDump[key]
-            # dumpFile.write(postToSave)
-            # dumpFile.write("\n")
+
 
 if __name__ == "__main__":
     main()
