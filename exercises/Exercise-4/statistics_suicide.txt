@@ -1,77 +1,77 @@
 ---------------------------
 Overall statistics:
-	Total number of documents found: 4453
+	Total number of documents found: 4433
 	Subreddit to doc_count data:
-		Subreddit:                depression || Percentage of total count: 18.168%
-		Subreddit:                     nofap || Percentage of total count: 12.059%
-		Subreddit:              stopdrinking || Percentage of total count: 11.498%
-		Subreddit:              suicidewatch || Percentage of total count: 9.185%
-		Subreddit:                offmychest || Percentage of total count: 7.254%
-		Subreddit:                       bpd || Percentage of total count: 4.334%
-		Subreddit:                    advice || Percentage of total count: 3.773%
-		Subreddit:                   anxiety || Percentage of total count: 3.638%
-		Subreddit:              foreveralone || Percentage of total count: 3.436%
-		Subreddit:                      adhd || Percentage of total count: 2.830%
-		Subreddit:              mentalhealth || Percentage of total count: 2.111%
-		Subreddit:                       ocd || Percentage of total count: 2.088%
-		Subreddit:                    leaves || Percentage of total count: 1.774%
-		Subreddit:       alcoholicsanonymous || Percentage of total count: 1.235%
-		Subreddit:             socialanxiety || Percentage of total count: 1.145%
-		Subreddit:           eatingdisorders || Percentage of total count: 1.123%
-		Subreddit:             schizophrenia || Percentage of total count: 1.100%
-		Subreddit:                   askdocs || Percentage of total count: 1.078%
-		Subreddit:             bipolarreddit || Percentage of total count: 0.966%
-		Subreddit:               needafriend || Percentage of total count: 0.966%
-		Subreddit:                 aspergers || Percentage of total count: 0.921%
-		Subreddit:              socialskills || Percentage of total count: 0.764%
-		Subreddit:                      ptsd || Percentage of total count: 0.741%
-		Subreddit:                  selfharm || Percentage of total count: 0.741%
-		Subreddit:            quittingkratom || Percentage of total count: 0.404%
-		Subreddit:               emetophobia || Percentage of total count: 0.382%
-		Subreddit:           opiatesrecovery || Percentage of total count: 0.382%
-		Subreddit:               stopsmoking || Percentage of total count: 0.382%
-		Subreddit:                stopgaming || Percentage of total count: 0.359%
-		Subreddit:                needadvice || Percentage of total count: 0.337%
-		Subreddit:          survivorsofabuse || Percentage of total count: 0.337%
-		Subreddit:                bipolarsos || Percentage of total count: 0.314%
-		Subreddit:           getting_over_it || Percentage of total count: 0.314%
-		Subreddit:            rapecounseling || Percentage of total count: 0.314%
-		Subreddit:              getmotivated || Percentage of total count: 0.247%
-		Subreddit:                      mmfb || Percentage of total count: 0.225%
-		Subreddit:             healthanxiety || Percentage of total count: 0.202%
-		Subreddit:                       sad || Percentage of total count: 0.202%
+		Subreddit:                depression || Percentage of total count: 17.979%
+		Subreddit:                     nofap || Percentage of total count: 12.114%
+		Subreddit:              stopdrinking || Percentage of total count: 11.550%
+		Subreddit:              suicidewatch || Percentage of total count: 9.159%
+		Subreddit:                offmychest || Percentage of total count: 7.286%
+		Subreddit:                       bpd || Percentage of total count: 4.354%
+		Subreddit:                    advice || Percentage of total count: 3.790%
+		Subreddit:                   anxiety || Percentage of total count: 3.654%
+		Subreddit:              foreveralone || Percentage of total count: 3.451%
+		Subreddit:                      adhd || Percentage of total count: 2.842%
+		Subreddit:              mentalhealth || Percentage of total count: 2.120%
+		Subreddit:                       ocd || Percentage of total count: 2.053%
+		Subreddit:                    leaves || Percentage of total count: 1.714%
+		Subreddit:       alcoholicsanonymous || Percentage of total count: 1.241%
+		Subreddit:             socialanxiety || Percentage of total count: 1.150%
+		Subreddit:           eatingdisorders || Percentage of total count: 1.128%
+		Subreddit:             schizophrenia || Percentage of total count: 1.105%
+		Subreddit:                   askdocs || Percentage of total count: 1.083%
+		Subreddit:             bipolarreddit || Percentage of total count: 0.970%
+		Subreddit:               needafriend || Percentage of total count: 0.970%
+		Subreddit:                 aspergers || Percentage of total count: 0.925%
+		Subreddit:              socialskills || Percentage of total count: 0.767%
+		Subreddit:                      ptsd || Percentage of total count: 0.744%
+		Subreddit:                  selfharm || Percentage of total count: 0.744%
+		Subreddit:            quittingkratom || Percentage of total count: 0.406%
+		Subreddit:               emetophobia || Percentage of total count: 0.383%
+		Subreddit:           opiatesrecovery || Percentage of total count: 0.383%
+		Subreddit:               stopsmoking || Percentage of total count: 0.383%
+		Subreddit:                stopgaming || Percentage of total count: 0.361%
+		Subreddit:                needadvice || Percentage of total count: 0.338%
+		Subreddit:          survivorsofabuse || Percentage of total count: 0.338%
+		Subreddit:                bipolarsos || Percentage of total count: 0.316%
+		Subreddit:           getting_over_it || Percentage of total count: 0.316%
+		Subreddit:            rapecounseling || Percentage of total count: 0.316%
+		Subreddit:              getmotivated || Percentage of total count: 0.248%
+		Subreddit:                      mmfb || Percentage of total count: 0.226%
+		Subreddit:             healthanxiety || Percentage of total count: 0.203%
+		Subreddit:                       sad || Percentage of total count: 0.203%
 		Subreddit:                 addiction || Percentage of total count: 0.180%
 		Subreddit:                alcoholism || Percentage of total count: 0.180%
 		Subreddit:                 specialed || Percentage of total count: 0.180%
 		Subreddit:                    nosurf || Percentage of total count: 0.135%
 		Subreddit:             psychotherapy || Percentage of total count: 0.135%
 		Subreddit:                socialwork || Percentage of total count: 0.135%
-		Subreddit:                     anger || Percentage of total count: 0.112%
-		Subreddit:                   bulimia || Percentage of total count: 0.112%
-		Subreddit:                      rape || Percentage of total count: 0.112%
-		Subreddit:                  selfhelp || Percentage of total count: 0.112%
+		Subreddit:                     anger || Percentage of total count: 0.113%
+		Subreddit:                   bulimia || Percentage of total count: 0.113%
+		Subreddit:                      rape || Percentage of total count: 0.113%
+		Subreddit:                  selfhelp || Percentage of total count: 0.113%
 		Subreddit:               anxietyhelp || Percentage of total count: 0.090%
 		Subreddit:     compulsiveskinpicking || Percentage of total count: 0.090%
 		Subreddit:                       gfd || Percentage of total count: 0.090%
 		Subreddit:             mentalillness || Percentage of total count: 0.090%
 		Subreddit:              stopselfharm || Percentage of total count: 0.090%
-		Subreddit:            antipsychiatry || Percentage of total count: 0.067%
-		Subreddit:            bodyacceptance || Percentage of total count: 0.067%
-		Subreddit:          domesticviolence || Percentage of total count: 0.067%
-		Subreddit:                helpmecope || Percentage of total count: 0.067%
-		Subreddit:             smartrecovery || Percentage of total count: 0.067%
-		Subreddit:              suicidenotes || Percentage of total count: 0.067%
+		Subreddit:            antipsychiatry || Percentage of total count: 0.068%
+		Subreddit:            bodyacceptance || Percentage of total count: 0.068%
+		Subreddit:          domesticviolence || Percentage of total count: 0.068%
+		Subreddit:                helpmecope || Percentage of total count: 0.068%
+		Subreddit:             smartrecovery || Percentage of total count: 0.068%
+		Subreddit:              suicidenotes || Percentage of total count: 0.068%
 		Subreddit:                      eood || Percentage of total count: 0.045%
 		Subreddit:            mengetrapedtoo || Percentage of total count: 0.045%
 		Subreddit:           schizoaffective || Percentage of total count: 0.045%
 		Subreddit:                       slp || Percentage of total count: 0.045%
 		Subreddit:             traumatoolbox || Percentage of total count: 0.045%
-		Subreddit:                    alanon || Percentage of total count: 0.022%
-		Subreddit:       cripplingalcoholism || Percentage of total count: 0.022%
-		Subreddit:                disability || Percentage of total count: 0.022%
-		Subreddit:        dysmorphicdisorder || Percentage of total count: 0.022%
-		Subreddit:                    health || Percentage of total count: 0.022%
-		Subreddit:                panicparty || Percentage of total count: 0.022%
-		Subreddit:                    phobia || Percentage of total count: 0.022%
-		Subreddit:       secondary_survivors || Percentage of total count: 0.022%
-		Subreddit:         selfharmcommunity || Percentage of total count: 0.022%
+		Subreddit:                    alanon || Percentage of total count: 0.023%
+		Subreddit:       cripplingalcoholism || Percentage of total count: 0.023%
+		Subreddit:                disability || Percentage of total count: 0.023%
+		Subreddit:        dysmorphicdisorder || Percentage of total count: 0.023%
+		Subreddit:                    health || Percentage of total count: 0.023%
+		Subreddit:                panicparty || Percentage of total count: 0.023%
+		Subreddit:                    phobia || Percentage of total count: 0.023%
+		Subreddit:       secondary_survivors || Percentage of total count: 0.023%
+		Subreddit:         selfharmcommunity || Percentage of total count: 0.023%

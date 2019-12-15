@@ -11,7 +11,7 @@ from elasticsearch import Elasticsearch
 ppPrinter = pprint.PrettyPrinter()
 searchEngine = Elasticsearch()
 
-op1 = "suicide OR sucidal OR kill myself OR killing myself OR end my life"
+op1 = "suicide OR suicidal OR kill myself OR killing myself OR end my life"
 op2 = "self harm"
 
 
@@ -43,30 +43,9 @@ def program(op, fileName):
 
     results = results["aggregations"]["authors"]["buckets"]
 
+    # Collect the different authors for the retrieved posts
     authors = []
-
     for result in results:
-        one_user = searchEngine.search(
-            index="reddit-mentalhealth4",
-            body={
-                "size": 10,
-                "query": {
-                    "bool": {
-                        "must": {
-                            "match": {"selftext": op}
-                        },
-                        "filter": {
-                            "term": {"author": str(result['key'])}
-                        },
-                    }
-                },
-                "_source": ["selftext", "author", "title", "subreddit"]
-            },
-            request_timeout=30
-        )
-
-        posts = one_user["hits"]["hits"]
-
         authors.append(result["key"])
 
     subs = searchEngine.search(
