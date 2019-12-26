@@ -148,7 +148,7 @@ _Return the ratio between price and time spent on every public transport line. I
 
 === Second
 
-_Returns all nodes that have a Railway with line C1_
+_Returns the Railway-traversed paths whose price is greater than the average price of the line of such relation_
 
 //hide
 [source,cypher]
@@ -164,3 +164,34 @@ _Returns all nodes that have a Railway with line C1_
   LIMIT 25
 ----
 //table
+
+== Advanced
+
+=== First
+
+_Return the shortest path (including each of the nodes) in between Gijón and Pola de Lena, along with the total trip time and the amount paid_
+
+//hide
+[source,cypher]
+----
+  MATCH shortestPath((a)-[c:BUSLINE|:RAILWAY|:BOAT*]-(b))
+  WHERE a.name='Pola de Lena' and b.name='Gijón'
+  RETURN reduce (var=0,v1 in c | var+v1.avg_ride_time), reduce(var = 0, v1 in c | var + v1.price), extract(x in c|type(x)),extract(x in c|startnode(x)),extract(x in c|endnode(x))
+  LIMIT 25
+----
+//table
+
+=== Second
+
+_From every possible path in between any node and Turón that goes through Langreo, return the departure node, the nodes in the path and the relationships traversed_
+
+//hide
+[source,cypher]
+----
+  MATCH path = (n)-[r1:RAILWAY]-(l)-[r2*1..3]-(t:Valley)
+  WHERE l.name='Langreo' AND n.name =~ "[aeiouAEIOU].*"
+  RETURN n, nodes(path), relationships(path)
+  LIMIT 25
+----
+//table
+

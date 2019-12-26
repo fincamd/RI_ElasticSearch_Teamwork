@@ -18,7 +18,7 @@ intermediate
     -- RETURN type(r), r.line, avg(r.price)/avg(r.avg_ride_time) as euros_per_minute_linewise
     -- LIMIT 25
 
-    -- Return the 
+    -- Returns the Railway-traversed paths whose price is greater than the average price of the line of such relation
     -- match (n)-[r1:RAILWAY]-(m)
     -- with r1.line as line
     -- match (a)-[r:RAILWAY]-(b)
