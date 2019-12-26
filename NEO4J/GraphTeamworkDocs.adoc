@@ -6,7 +6,6 @@
 GraphGist created to complement the main documentation of this graph databases teamwork using Neo4j.
 
 //setup
-//hide
 [source,cypher]
 ----
 CREATE
