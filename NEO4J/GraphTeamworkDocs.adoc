@@ -24,8 +24,6 @@ _italic_
 
 link:http://example.org[Link Text]
 
-
-
 //setup
 //hide
 [source,cypher]
