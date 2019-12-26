@@ -5,7 +5,10 @@
 
 GraphGist created to complement the main documentation of this graph databases teamwork using Neo4j.
 
+== Graph creation script
+
 //setup
+//hide
 [source,cypher]
 ----
 CREATE
@@ -97,7 +100,13 @@ CREATE
   (oviedo)-[:BUSLINE {price: 4.5, avg_ride_time: 60}]->(onis)
 ----
 
-== Beginner queries
+= Queries
+
+== Beginner
+
+=== First
+
+_Returns all cities that have over 10000 inhabitants_
 
 //hide
 [source,cypher]
@@ -105,5 +114,53 @@ CREATE
   MATCH (n:City)
   WHERE n.inhabitants > 10000
   RETURN n
+----
+//table
+
+=== Second
+
+_Returns all nodes that have a Railway with line C1_
+
+//hide
+[source,cypher]
+----
+  MATCH (n)-[r:RAILWAY]->(o)
+  WHERE r.line ="C1"
+  RETURN n, r, o
+----
+//table
+
+== Intermediate
+
+=== First
+
+_Return the ratio between price and time spent on every public transport line. In the case of busline and boat there is no lane, hence the cost is as whole. Order by type of public transport and by line name_
+
+//hide
+[source,cypher]
+----
+  MATCH (n)-[r:RAILWAY|:BOAT|:BUSLINE]-(v)
+  WHERE r.avg_ride_time > 19
+  RETURN type(r), r.line, avg(r.price)/avg(r.avg_ride_time) as euros_per_minute_linewise
+  LIMIT 25
+----
+//table
+
+=== Second
+
+_Returns all nodes that have a Railway with line C1_
+
+//hide
+[source,cypher]
+----
+  MATCH (n)-[r1:RAILWAY]-(m)
+  WITH r1.line AS line
+  MATCH (a)-[r:RAILWAY]-(b)
+  WHERE r.line = line
+  WITH avg(r.price) AS average, line AS line
+  MATCH (a)-[r:RAILWAY]-(b)
+  WHERE (r.price) > average AND r.line = line
+  RETURN r
+  LIMIT 25
 ----
 //table
