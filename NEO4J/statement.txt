@@ -1,0 +1,75 @@
+OBJETIVO
+
+Crear una base de datos de grafo de ejemplo sobre un dominio
+de aplicación determinado sobre la que se realizarán consultas
+en lenguaje Cypher del Neo4J
+
+<< NO VALE UN GRAFO DE PELÍCULAS o SERIES DE TV, ACTORES, ETC. >>
+<< TAMPOCO VALE UN GRAFO DE JUEGO DE TRONOS >>
+
+- Realizar en grupos de 3 personas (+1, -1, -2, comunicar motivadamente a darioa@uniovi.es)
+- Fecha de entrega: <indicada en la tarea>
+- Formato: Documento de procesador de textos / PDF editable
+(incluido en un fichero ZIP con otros ficheros adicionales, y/o el código si se hace la
+aplicación opcional)
+
+ESTRUCTURA DEL TRABAJO
+
+0. PORTADA. Título, apellidos y nombre de los integrantes
+del grupo.
+
+1. Elegir un <<dominio de aplicación>>. Puede ser el mismo que
+prácticas de otras asignaturas.
+Explicar brevemente el dominio de aplicación (temática de
+la base de datos).
+Incluir un gráfico del esquema conceptual general del modelo.
+
+
+2. Representar gráficamente la <<instancia de la base de datos>>
+(un subgrafo si queda demasiado grande para su visualización y comprensión),
+explicando brevemente el significado de los nodos y relaciones
+de la instancia elegida (o el subconjunto ).
+Puede hacerse a mano y luego escaneándola.
+Orientación sobre la complejidad de la instancia:
+- 20 nodos
+- 40 relaciones
+- 4 tipos de relación
+
+3. Indicar el <<código de creación del grafo>> (script de creación
+de la base de datos en Cypher usando CREATE)
+
+[ADICIONALMENTE puede adjuntarse el directorio graph.db con la base de datos usada]
+
+4. Realizar <<consultas>> sobre la instancia de distintos niveles
+de dificultad, al menos:
+a) 2 consultas elementales (ej: clientes de Oviedo, número
+de cuentas, etc.)
+b) 2 consultas intermedias
+c) 2 consultas avanzadas, procurando que demuestren las
+capacidades específicas de un SGBD de grafo (cierres transitivos,
+caminos mínimos, subgrafos complejos, etc.). (ej: empresario
+y político relacionados indirectamente a través de participación
+en diversas sociedades intermedias, etc.)
+
+Indicar:
+    - Objetivo de la consulta
+    - Sentencia(s) de la consulta en Cypher
+    - Resultado de ejecución en texto (y opcionalmente representación gráfica si es adecuada)
+
+5. Entregar los scripts de creación de la base de datos y las consultas en un fichero de texto independiente.
+
+
+6. OPCIONAL. Empaquetar las consultas anteriores en una
+<<aplicación opcional>> que las permita lanzar a través de
+una interfaz (por ejemplo de texto). Puede utilizarse la
+API de acceso al Neo4J en Java u otros lenguajes, o bien el
+acceso por HTTP "a mano".
+
+Incluir el código y los binarios necesarios para ejecutar
+la aplicación.
+
+7. OPCIONAL. Entregar la documentación en formato GraphGist de Neo4j:
+
+http://graphgist.neo4j.com/#!/gists/about
+
+Los grupos de 4 deberán realizar obligatoriamente las tareas opcionales.
