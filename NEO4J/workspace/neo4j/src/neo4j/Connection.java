@@ -9,6 +9,9 @@ import org.neo4j.driver.Result;
 import org.neo4j.driver.Session;
 import org.neo4j.driver.Transaction;
 import org.neo4j.driver.TransactionWork;
+import org.neo4j.driver.exceptions.ServiceUnavailableException;
+
+import queries.MyQuery;
 
 public class Connection implements AutoCloseable {
 
@@ -17,6 +20,11 @@ public class Connection implements AutoCloseable {
 	public Connection(String uri, String user, String password) {
 		LogManager.getLogManager().reset();
 		driver = GraphDatabase.driver(uri, AuthTokens.basic(user, password));
+		try {
+			driver.verifyConnectivity();
+		} catch (ServiceUnavailableException e) {
+			throw new RuntimeException("Couldn't connect");
+		}
 	}
 
 	@Override
@@ -29,9 +37,12 @@ public class Connection implements AutoCloseable {
 	 * ones.
 	 * 
 	 * @param query
+	 * @return
 	 */
 	public void runQuery(MyQuery query) {
+
 		try (Session session = driver.session()) {
+
 			session.writeTransaction(new TransactionWork<Void>() {
 				@Override
 				public Void execute(Transaction tx) {
@@ -41,6 +52,7 @@ public class Connection implements AutoCloseable {
 				}
 			});
 		}
+	
 	}
 
 }
