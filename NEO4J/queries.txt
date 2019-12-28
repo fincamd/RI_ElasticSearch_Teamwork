@@ -36,12 +36,12 @@ advanced
     -- Return the shortest path (including each of the nodes) in between Gijón and Pola de Lena, along with the total trip time and the amount paid
     -- MATCH shortestPath((a)-[c:BUSLINE|:RAILWAY|:BOAT*]-(b))
     -- WHERE a.name='Pola de Lena' and b.name='Gijón'
-    -- RETURN reduce (var=0,v1 in c | var+v1.avg_ride_time) as Total_Time, reduce(var = 0, v1 in c | var + v1.price) as Total_Price, extract(x in c|type(x)) as Types,extract(x in c|startnode(x).name) as InitialNodes,extract(x in c|endnode(x).name) as EndNodes
+    -- RETURN reduce (var=0,v1 in c | var+v1.avg_ride_time) as Total_Time, reduce(var = 0, v1 in c | var + v1.price) as Total_Price, c as Relationships,extract(x in c|startnode(x)) as InitialNodes,extract(x in c|endnode(x)) as EndNodes
     -- LIMIT 25
 
     -- From every possible path between any node that is adjacent to Langreo by train
-		and a valley return the departure node, the nodes in the path and the relationships traversed
-		except those that start with a vowel
+		and a valley return the departure node, the nodes in the path and the relationships traversed.
+		The first node must start with a vowel,
     -- MATCH path = (n)-[r1:RAILWAY]-(l)-[r2*1..3]-(t:Valley)
     -- WHERE l.name='Langreo' AND n.name =~ "[aeiouAEIOU].*"
     -- RETURN n, nodes(path), relationships(path)
