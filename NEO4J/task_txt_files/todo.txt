@@ -1,5 +1,0 @@
-Host html (github ?)
-whitelist github url in "$NEO4J_HOME/conf/neo4j.conf"
-check CORS policy is allowed, otherwise use "https://cors-anywhere.herokuapp.com/your_url"
-create a link to internet that has this appearance: https://localhost:7474/browser?cmd=play&arg=<guide url or name (github ?)>
-try to execute it

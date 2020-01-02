@@ -37,7 +37,7 @@ intermediate
 advanced
     -- Return the shortest path (including each of the nodes) in between Gijón and Pola de Lena, along with the total trip time and the amount paid
     -- MATCH shortestPath((a)-[c:BUSLINE|:RAILWAY|:BOAT*]-(b))
-    -- WHERE a.name='Pola de Lena' and b.name='Gijón'
+    -- WHERE a.name='Pola de Lena' AND b.name='Gijón'
     -- RETURN reduce (var=0,v1 in c | var+v1.avg_ride_time) as Total_Time, reduce(var = 0, v1 in c | var + v1.price) as Total_Price, c as Relationships,extract(x in c|startnode(x)) as InitialNodes,extract(x in c|endnode(x)) as EndNodes
     -- LIMIT 25
 

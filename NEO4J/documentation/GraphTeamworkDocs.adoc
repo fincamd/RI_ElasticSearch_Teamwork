@@ -7,8 +7,9 @@ GraphGist created to complement the main documentation of this graph databases t
 
 == Graph creation script
 
-//setup
 //hide
+//setup
+//output
 [source,cypher]
 ----
 CREATE
@@ -99,8 +100,11 @@ CREATE
   (cudillero)-[:BOAT {avg_ride_time: 20, price: 2.34}]->(candas),
   (oviedo)-[:BUSLINE {price: 4.5, avg_ride_time: 60}]->(onis)
 ----
+//graph
 
 = Queries
+
+//console
 
 == Beginner
 
@@ -108,7 +112,6 @@ CREATE
 
 _Return all cities that have over 10000 inhabitants ordered by number of inhabitants_
 
-//hide
 [source,cypher]
 ----
   MATCH (n:City)
@@ -122,7 +125,6 @@ _Return all cities that have over 10000 inhabitants ordered by number of inhabit
 
 _Returns all nodes that have a Railway with line C1_
 
-//hide
 [source,cypher]
 ----
   MATCH (n)-[r:RAILWAY]->(o)
@@ -137,12 +139,11 @@ _Returns all nodes that have a Railway with line C1_
 
 _Return the ratio between price and time spent on every public transport line. In the case of busline and boat there is no lane, hence the cost is represented as a whole. Order by type of public transport and by line name_
 
-//hide
 [source,cypher]
 ----
   MATCH (n)-[r:RAILWAY|:BOAT|:BUSLINE]-(v)
   WHERE r.avg_ride_time > 19
-  RETURN type(r), r.line, avg(r.price)/avg(r.avg_ride_time) as euros_per_minute_linewise
+  RETURN type(r), r.line, avg(r.price)/avg(r.avg_ride_time) AS euros_per_minute_linewise
 	ORDER BY euros_per_minute_linewise DESC
   LIMIT 25
 ----
@@ -152,14 +153,13 @@ _Return the ratio between price and time spent on every public transport line. I
 
 _Return the Railway-traversed paths between two adjacent nodes of the same lime whose price is higher than the average price of their line. Return the name of start and end nodes, as well as the average ride time of each path, the line and its price. Also return the average price of such line._
 
-//hide
 [source,cypher]
 ----
   MATCH (n)-[r1:RAILWAY]-(m)
-  WITH r1.line as line
+  WITH r1.line AS line
   MATCH (a)-[r:RAILWAY]-(b)
   WHERE r.line = line
-  WITH avg(r.price) as average, line as line
+  WITH avg(r.price) AS average, line AS line
   MATCH (a)-[r:RAILWAY]-(b)
   WHERE (r.price) > average AND r.line = line
   RETURN a.name,r.avg_ride_time,r.line,r.price,b.name,average
@@ -173,12 +173,11 @@ _Return the Railway-traversed paths between two adjacent nodes of the same lime 
 
 _Return the shortest path (including each of the nodes) in between Gijón and Pola de Lena, along with the total trip time and the amount paid_
 
-//hide
 [source,cypher]
 ----
   MATCH shortestPath((a)-[c:BUSLINE|:RAILWAY|:BOAT*]-(b))
-  WHERE a.name='Pola de Lena' and b.name='Gijón'
-  RETURN reduce (var=0,v1 in c | var+v1.avg_ride_time) as Total_Time, reduce(var = 0, v1 in c | var + v1.price) as Total_Price, c as Relationships,extract(x in c|startnode(x)) as InitialNodes,extract(x in c|endnode(x)) as EndNodes
+  WHERE a.name='Pola de Lena' AND b.name='Gijón'
+  RETURN reduce (var=0,v1 IN c | var+v1.avg_ride_time) AS Total_Time, reduce(var = 0, v1 IN c | var + v1.price) AS Total_Price, c AS Relationships,extract(x IN c|startnode(x)) AS InitialNodes,extract(x IN c|endnode(x)) AS EndNodes
   LIMIT 25
 ----
 //table
@@ -187,7 +186,6 @@ _Return the shortest path (including each of the nodes) in between Gijón and Po
 
 _From every possible path between any node that is adjacent to Langreo by train and communicated with a Valley in 1 to 3 steps through any conveyance means, return the departure node, the nodes in the path and the relationships traversed. The first node must start with a vowel_
 
-//hide
 [source,cypher]
 ----
   MATCH path = (n)-[r1:RAILWAY]-(l)-[r2*1..3]-(t:Valley)
@@ -196,4 +194,3 @@ _From every possible path between any node that is adjacent to Langreo by train 
   LIMIT 25
 ----
 //table
-
